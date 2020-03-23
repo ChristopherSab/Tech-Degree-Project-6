@@ -2,7 +2,7 @@
 // Variables //
 const keyboardButtons = document.getElementById("qwerty");
 const phrase = document.getElementById("phrase");
-const startGame = document.getElementsByClassName("btn__reset");
+const startGame = document.getElementsByClassName("btn__reset")[0];
 let incorrectGuesses = 0;
 
 //Start the game
