@@ -1,9 +1,19 @@
 
 // Variables //
-const keyboardButtons = document.getElementById('qwerty');
-const phrase = document.getElementById('phrase');
-const startGame = document.getElementById('btn__reset');
+const keyboardButtons = document.getElementById("qwerty");
+const phrase = document.getElementById("phrase");
+const startGame = document.getElementsByClassName("btn__reset");
 let incorrectGuesses = 0;
+
+//Start the game
+startGame.addEventListener("click", () => {
+
+    let screenOverlay = document.getElementById("overlay");
+    screenOverlay.style.display = 'none';
+   
+
+});
+
 
 // An array of cliche phrases
 const phrasesArray = [
