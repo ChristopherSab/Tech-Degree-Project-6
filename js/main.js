@@ -14,9 +14,8 @@ startGame.addEventListener("click", () => {
 
 });
 
-
 // An array of cliche phrases
-const phrasesArray = [
+const phrases = [
     "Love is Blind",
     "What goes around comes around",
     "Everything that glitters is not gold",
@@ -33,8 +32,33 @@ function getRandomPhraseAsArray(arr) {
 
 }
 
+//This function adds the letters of a string to a display
+function addPhraseToDisplay(arr){
 
+    for(let i =0; i < arr.length; i+=1){
 
+        let stringCharacter = arr[i].split("");
+
+        for(j=0; j < stringCharacter.length; j+=1){
+
+                      
+            let listItem = document.createElement("LI");
+            listItem.innerHTML = stringCharacter[j];
+            let newItem = document.getElementById("phrase").appendChild(listItem);
+
+            var letters = /^[A-Za-z]+$/;
+            if(newItem.innerHTML.includes(letters)){
+                newItem.classList.add("letter");
+            }
+
+        }  
+   
+    }
+}
+
+const phrasesArray = getRandomPhraseAsArray(phrases);
+
+addPhraseToDisplay(phrasesArray);
 
 
 
