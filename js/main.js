@@ -57,11 +57,22 @@ function checkLetter(pressedButton) {
               letters[i].classList.add("show");
           }
       }
+
+
   } 
 
-keyboardButtons.addEventListener("click", () => {
+keyboardButtons.addEventListener("click", (event) => {
 
+    if(event.target.tagName == 'BUTTON'){
 
+        event.target.classList.add("chosen");
+        event.target.disabled = true;
+
+        letterFound = checkLetter(event.target.innerHTML); // Stuck here :(
+    }
+
+    
+    
    
 });
 
