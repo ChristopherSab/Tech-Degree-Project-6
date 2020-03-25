@@ -11,7 +11,6 @@ startGame.addEventListener("click", () => {
     let screenOverlay = document.getElementById("overlay");
     screenOverlay.style.display = 'none';
    
-
 });
 
 // An array of cliche phrases
@@ -52,19 +51,19 @@ addPhraseToDisplay(phrasesArray);
 
 
 function checkLetter(pressedButton) {
+    const letters =   document.querySelectorAll('.letter');
+      for(let i=0; i < letters.length; i ++){
+          if(letters[i] === pressedButton){
+              letters[i].classList.add("show");
+          }
+      }
+  }
 
-    const letters = document.getElementsByClassName("letter");
+keyboardButtons.addEventListener("click", () => {
 
-    for(let i=0; i < letters.length; i+=1){
 
-        if(letters[i] === pressedButton){
-
-            listItem.classList.add("show");
-            return pressedButton;
-        }
-    }
-
-}
+   
+});
 
 
 
