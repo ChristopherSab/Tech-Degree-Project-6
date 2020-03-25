@@ -50,14 +50,15 @@ const phrasesArray = getRandomPhraseAsArray(phrases);
 addPhraseToDisplay(phrasesArray);
 
 
+// This function reveals a letter by adding a .show class to it in the hidden phrase
 function checkLetter(pressedButton) {
+    
     const letters =   document.querySelectorAll('.letter');
       for(let i=0; i < letters.length; i ++){
-          if(letters[i] === pressedButton){
+          if(letters[i].innerHTML.toLowerCase() === pressedButton){
               letters[i].classList.add("show");
           }
       }
-
 
   } 
 
@@ -68,11 +69,8 @@ keyboardButtons.addEventListener("click", (event) => {
         event.target.classList.add("chosen");
         event.target.disabled = true;
 
-        letterFound = checkLetter(event.target.innerHTML); // Stuck here :(
-    }
-
-    
-    
+        letterFound = checkLetter(event.target.innerHTML); 
+    } 
    
 });
 
