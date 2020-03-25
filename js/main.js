@@ -57,7 +57,7 @@ function checkLetter(pressedButton) {
               letters[i].classList.add("show");
           }
       }
-  }
+  } 
 
 keyboardButtons.addEventListener("click", () => {
 
