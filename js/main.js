@@ -51,6 +51,20 @@ const phrasesArray = getRandomPhraseAsArray(phrases);
 addPhraseToDisplay(phrasesArray);
 
 
+function checkLetter(pressedButton) {
+
+    const letters = document.getElementsByClassName("letter");
+
+    for(let i=0; i < letters.length; i+=1){
+
+        if(letters[i] === pressedButton){
+
+            listItem.classList.add("show");
+            return pressedButton;
+        }
+    }
+
+}
 
 
 
