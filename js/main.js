@@ -15,11 +15,11 @@ startGame.addEventListener("click", () => {
 
 // An array of cliche phrases
 const phrases = [
-    "Love is Blind",
-    "What goes around comes around",
-    "Everything that glitters is not gold",
-    "Jack of all trades",
-    "You cannot cry over spilt milk"
+    "Love Is Blind",
+    "What Goes Around Comes Around",
+    "Everything That Glitters Is Not Gold",
+    "Jack Of All Trades",
+    "You Cannot Cry Over Spilt Milk"
 ];
 
 // This function gets a random phrase as an array
@@ -57,9 +57,8 @@ function checkLetter(pressedButton) {
       for(let i=0; i < letters.length; i ++){
           if(letters[i].innerHTML.toLowerCase() === pressedButton){
               letters[i].classList.add("show");
-          }
+          } 
       }
-
   } 
 
 keyboardButtons.addEventListener("click", (event) => {
@@ -69,7 +68,14 @@ keyboardButtons.addEventListener("click", (event) => {
         event.target.classList.add("chosen");
         event.target.disabled = true;
 
-        letterFound = checkLetter(event.target.innerHTML); 
+        const letterFound = checkLetter(event.target.innerHTML);
+
+        
+        if(letterFound === null) {
+
+            console.log("Test is working");
+
+        }
     } 
    
 });
