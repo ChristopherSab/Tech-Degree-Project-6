@@ -3,6 +3,9 @@
 const keyboardButtons = document.getElementById("qwerty");
 const phrase = document.getElementById("phrase");
 const startGame = document.getElementsByClassName("btn__reset")[0];
+
+let lives = document.getElementsByClassName("tries");
+
 let incorrectGuesses = 0;
 
 //Start the game
@@ -72,10 +75,19 @@ keyboardButtons.addEventListener("click", (event) => {
         event.target.classList.add("chosen");
         event.target.disabled = true;
         
+        
+
         if(!letterFound) {
 
             incorrectGuesses += 1;
-            console.log(incorrectGuesses);
+
+            //Struggling with removing the live heart li after each incorrectGuess :(
+            for (let i = 0; i < 6; i++){
+            let ol = document.getElementsByTagName('ol')[0];
+            let li = document.querySelector('li');
+            ol.removeChild(li[i]);
+        }
+
 
         }
     } 
