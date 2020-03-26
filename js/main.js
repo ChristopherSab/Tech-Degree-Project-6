@@ -52,12 +52,15 @@ addPhraseToDisplay(phrasesArray);
 
 // This function reveals a letter by adding a .show class to it in the hidden phrase
 function checkLetter(pressedButton) {
-    
+    letterFound = false;
     const letters =   document.querySelectorAll('.letter');
       for(let i=0; i < letters.length; i ++){
           if(letters[i].innerHTML.toLowerCase() === pressedButton){
+
+              letterFound = pressedButton;
               letters[i].classList.add("show");
-          } 
+
+          }
       }
   } 
 
@@ -65,15 +68,14 @@ keyboardButtons.addEventListener("click", (event) => {
 
     if(event.target.tagName == 'BUTTON'){
 
+        checkLetter(event.target.innerHTML);
         event.target.classList.add("chosen");
         event.target.disabled = true;
-
-        const letterFound = checkLetter(event.target.innerHTML);
-
         
-        if(letterFound === null) {
+        if(!letterFound) {
 
-            console.log("Test is working");
+            incorrectGuesses += 1;
+            console.log(incorrectGuesses);
 
         }
     } 
