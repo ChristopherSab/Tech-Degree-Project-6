@@ -78,18 +78,9 @@ keyboardButtons.addEventListener("click", (event) => {
         
 
         if(!letterFound) {
-
             incorrectGuesses += 1;
-
-            //Struggling with removing the live heart li after each incorrectGuess :(
-            for (let i = 0; i < 6; i++){
-            let ol = document.getElementsByTagName('ol')[0];
-            let li = document.querySelector('li');
-            ol.removeChild(li[i]);
-        }
-
-
-        }
+            lives[incorrectGuesses - 1].firstChild.src = 'images/lostHeart.png';
+          }
     } 
    
 });
