@@ -67,6 +67,8 @@ function checkLetter(pressedButton) {
       }
   } 
 
+
+
 keyboardButtons.addEventListener("click", (event) => {
 
     if(event.target.tagName == 'BUTTON'){
@@ -82,8 +84,31 @@ keyboardButtons.addEventListener("click", (event) => {
             lives[incorrectGuesses - 1].firstChild.src = 'images/lostHeart.png';
           }
     } 
+    
    
 });
+
+checkWin ();
+
+//This function checks whether the player has won or lost the game
+function checkWin (){
+
+    const letters =   document.getElementsByClassName('.letter');
+    const show =   document.getElementsByClassName('.show');
+
+    if(letters.length == show.length){
+        const overlay = document.getElementById('overlay');
+        overlay.classList.remove("start");
+        overlay.classList.add("win");
+        overlay.style.display = "flex";
+    } else if (incorrectGuesses > 4) {
+        const overlay = document.getElementById('overlay');
+        overlay.classList.remove("start");
+        overlay.classList.add("lose");
+        overlay.style.display = "flex";
+    }
+
+}
 
 
 
