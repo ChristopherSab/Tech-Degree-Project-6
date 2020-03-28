@@ -28,7 +28,7 @@ const phrases = [
 // This function gets a random phrase as an array
 function getRandomPhraseAsArray(arr) {
   
-    const arrayIndex = Math.floor( Math.random() * arr.length) + 1;
+    const arrayIndex = Math.floor( Math.random() * arr.length);
 
     return arr[arrayIndex].split('');
 
@@ -89,24 +89,28 @@ keyboardButtons.addEventListener("click", (event) => {
     
 });
 
-
-
 //This function checks whether the player has won or lost the game
 function checkWin (){
 
     const letters =   document.getElementsByClassName('letter');
     const show =   document.getElementsByClassName('show');
+    const headLine = document.getElementsByClassName("title")[0];
 
     if(letters.length == show.length){
         const overlay = document.getElementById('overlay');
         overlay.classList.remove("start");
         overlay.classList.add("win");
         overlay.style.display = "flex";
+        headLine.innerHTML = "Congratulations, You Won!";
+        startGame.innerHTML = "Play Again";
+
     } else if (incorrectGuesses > 4) {
         const overlay = document.getElementById('overlay');
         overlay.classList.remove("start");
         overlay.classList.add("lose");
         overlay.style.display = "flex";
+        headLine.innerHTML = "Sorry, You Lost!";
+        startGame.innerHTML = "Try Again";
     }
 
 }
