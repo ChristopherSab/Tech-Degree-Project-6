@@ -65,6 +65,7 @@ function checkLetter(pressedButton) {
           }
       }
   } 
+
  
 keyboardButtons.addEventListener("click", (event) => {
 
@@ -120,35 +121,31 @@ function restartGame(){
     const restartGame = document.getElementsByClassName("restart")[0];
 
     restartGame.addEventListener("click", () => {
-
+        
         const letters =   document.querySelectorAll('.letter');
-        for(let i=0; i < letters.length; i++){
 
+
+        for(let i=0; i < letters.length; i++){
             letters[i].classList.remove("show");
         }
 
         const chosenLetters =   document.querySelectorAll('.chosen');
         for(let i=0; i < chosenLetters.length; i++){
-
             chosenLetters[i].classList.remove("chosen");
             chosenLetters[i].disabled = false;
         }
 
-        incorrectGuesses = 0; 
-
-        const phrasesArray = getRandomPhraseAsArray(phrases);
-        addPhraseToDisplay();
-        addPhraseToDisplay(phrasesArray);
-
         for(let i =0; i < lives.length; i++){
             lives[i].firstChild.src = 'images/liveHeart.png';
         }
+
+        incorrectGuesses = 0;   
+
+        addPhraseToDisplay(null);
+        const newPhrasesArray = getRandomPhraseAsArray(phrases);
+        addPhraseToDisplay(newPhrasesArray);
           
-    });
-
-
-  
-
+    });   
 
 }
 
