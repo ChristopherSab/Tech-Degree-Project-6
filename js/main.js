@@ -52,7 +52,6 @@ const phrasesArray = getRandomPhraseAsArray(phrases);
 
 addPhraseToDisplay(phrasesArray);
 
-
 // This function reveals a letter by adding a .show class to it in the hidden phrase
 function checkLetter(pressedButton) {
     letterFound = false;
@@ -66,9 +65,7 @@ function checkLetter(pressedButton) {
           }
       }
   } 
-
-
-  
+ 
 keyboardButtons.addEventListener("click", (event) => {
 
     if(event.target.tagName == 'BUTTON'){
@@ -77,8 +74,6 @@ keyboardButtons.addEventListener("click", (event) => {
         event.target.classList.add("chosen");
         event.target.disabled = true;
         
-        
-
         if(!letterFound) {
             incorrectGuesses += 1;
             lives[incorrectGuesses - 1].firstChild.src = 'images/lostHeart.png';
@@ -102,6 +97,7 @@ function checkWin (){
         overlay.classList.add("win");
         overlay.style.display = "flex";
         headLine.innerHTML = "Congratulations, You Won!";
+        startGame.classList.add("restart");
         startGame.innerHTML = "Play Again";
 
     } else if (incorrectGuesses > 4) {
@@ -110,8 +106,49 @@ function checkWin (){
         overlay.classList.add("lose");
         overlay.style.display = "flex";
         headLine.innerHTML = "Sorry, You Lost!";
+        startGame.classList.add("restart");
         startGame.innerHTML = "Try Again";
     }
+
+    restartGame();
+
+}
+
+//This function resets the game when a User clicks, Play Again or Try again
+function restartGame(){
+
+    const restartGame = document.getElementsByClassName("restart")[0];
+
+    restartGame.addEventListener("click", () => {
+
+        const letters =   document.querySelectorAll('.letter');
+        for(let i=0; i < letters.length; i++){
+
+            letters[i].classList.remove("show");
+        }
+
+        const chosenLetters =   document.querySelectorAll('.chosen');
+        for(let i=0; i < chosenLetters.length; i++){
+
+            chosenLetters[i].classList.remove("chosen");
+            chosenLetters[i].disabled = false;
+        }
+
+        incorrectGuesses = 0; 
+
+        const phrasesArray = getRandomPhraseAsArray(phrases);
+        addPhraseToDisplay();
+        addPhraseToDisplay(phrasesArray);
+
+        for(let i =0; i < lives.length; i++){
+            lives[i].firstChild.src = 'images/liveHeart.png';
+        }
+          
+    });
+
+
+  
+
 
 }
 
