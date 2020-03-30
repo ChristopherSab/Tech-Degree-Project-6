@@ -1,4 +1,3 @@
-
 // Variables //
 const keyboardButtons = document.getElementById("qwerty");
 const ul = phrase.querySelector('ul');
@@ -12,7 +11,7 @@ startGame.addEventListener("click", () => {
 
     let screenOverlay = document.getElementById("overlay");
     screenOverlay.style.display = 'none';
-   
+
 });
 
 // An array of cliche phrases //
@@ -38,72 +37,66 @@ const phrases = [
 
 // This function gets a random phrase as an array
 function getRandomPhraseAsArray(arr) {
-  
-    const arrayIndex = Math.floor( Math.random() * arr.length);
-
+    const arrayIndex = Math.floor(Math.random() * arr.length);
     return arr[arrayIndex].split('');
-
 }
 
 //This function adds the letters of a string to a display
 function addPhraseToDisplay(arr) {
     for (let i = 0; i < arr.length; i += 1) {
-      let listItem = document.createElement("LI");
-      ul.appendChild(listItem);
-      listItem.innerHTML = arr[i];
-      if (arr[i] === ' ') {
-        listItem.classList.add("space");
-      } else {
-        listItem.classList.add("letter");
-      }
+        let listItem = document.createElement("LI");
+        ul.appendChild(listItem);
+        listItem.innerHTML = arr[i];
+        if (arr[i] === ' ') {
+            listItem.classList.add("space");
+        } else {
+            listItem.classList.add("letter");
+        }
     }
-  }
+}
 
 const phrasesArray = getRandomPhraseAsArray(phrases);
-
 addPhraseToDisplay(phrasesArray);
 
 // This function reveals a letter by adding a .show class to it in the hidden phrase
 function checkLetter(pressedButton) {
     letterFound = false;
-    const letters =   document.querySelectorAll('.letter');
-      for(let i=0; i < letters.length; i ++){
-          if(letters[i].innerHTML.toLowerCase() === pressedButton){
+    const letters = document.querySelectorAll('.letter');
+    for (let i = 0; i < letters.length; i++) {
+        if (letters[i].innerHTML.toLowerCase() === pressedButton) {
+            letterFound = pressedButton;
+            letters[i].classList.add("show");
+        }
+    }
+}
 
-              letterFound = pressedButton;
-              letters[i].classList.add("show");
 
-          }
-      }
-  } 
-
- 
 keyboardButtons.addEventListener("click", (event) => {
 
-    if(event.target.tagName == 'BUTTON'){
+    if (event.target.tagName == 'BUTTON') {
 
         checkLetter(event.target.innerHTML);
         event.target.classList.add("chosen");
         event.target.disabled = true;
-        
-        if(!letterFound) {
+
+        if (!letterFound) {
             incorrectGuesses += 1;
             lives[incorrectGuesses - 1].firstChild.src = 'images/lostHeart.png';
-          }
-    } 
-    
-    checkWin ();
-    
+        }
+    }
+
+    checkWin();
+
 });
 
 //This function checks whether the player has won or lost the game
-function checkWin (){
+function checkWin() {
 
-    const letters =   document.getElementsByClassName('letter');
-    const show =   document.getElementsByClassName('show');
+    const letters = document.getElementsByClassName('letter');
+    const show = document.getElementsByClassName('show');
     const headLine = document.getElementsByClassName("title")[0];
 
-    if(letters.length == show.length){
+    if (letters.length == show.length) {
         const overlay = document.getElementById('overlay');
         overlay.classList.remove("start");
         overlay.classList.add("win");
@@ -127,35 +120,35 @@ function checkWin (){
 }
 
 //This function resets the game when a User clicks, Play Again or Try again
-function restartGame(){
+function restartGame() {
 
     const restartGame = document.getElementsByClassName("restart")[0];
 
     restartGame.addEventListener("click", () => {
-        
-        const letters =   document.querySelectorAll('#phrase ul li');
+
+        const letters = document.querySelectorAll('#phrase ul li');
 
 
-        for(let i=0; i < letters.length; i++){
+        for (let i = 0; i < letters.length; i++) {
             ul.removeChild(letters[i]);
         }
 
-        const chosenLetters =   document.querySelectorAll('.chosen');
-        for(let i=0; i < chosenLetters.length; i++){
+        const chosenLetters = document.querySelectorAll('.chosen');
+        for (let i = 0; i < chosenLetters.length; i++) {
             chosenLetters[i].classList.remove("chosen");
             chosenLetters[i].disabled = false;
         }
 
-        for(let i =0; i < lives.length; i++){
+        for (let i = 0; i < lives.length; i++) {
             lives[i].firstChild.src = 'images/liveHeart.png';
         }
 
-        incorrectGuesses = 0;   
+        incorrectGuesses = 0;
 
         const newPhrasesArray = getRandomPhraseAsArray(phrases);
         addPhraseToDisplay(newPhrasesArray);
-          
-    });   
+
+    });
 
 }
 
