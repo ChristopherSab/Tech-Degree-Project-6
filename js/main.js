@@ -3,6 +3,9 @@
 const keyboardButtons = document.getElementById("qwerty");
 const phrase = document.getElementById("phrase");
 const startGame = document.getElementsByClassName("btn__reset")[0];
+const ul = phrase.querySelector('ul');
+
+
 
 let lives = document.getElementsByClassName("tries");
 
@@ -38,7 +41,7 @@ function getRandomPhraseAsArray(arr) {
 function addPhraseToDisplay(arr) {
     for (let i = 0; i < arr.length; i += 1) {
       let listItem = document.createElement("LI");
-      phrase.appendChild(listItem);
+      ul.appendChild(listItem);
       listItem.innerHTML = arr[i];
       if (arr[i] === ' ') {
         listItem.classList.add("space");
@@ -122,11 +125,11 @@ function restartGame(){
 
     restartGame.addEventListener("click", () => {
         
-        const letters =   document.querySelectorAll('.letter');
+        const letters =   document.querySelectorAll('#phrase ul li');
 
 
         for(let i=0; i < letters.length; i++){
-            letters[i].classList.remove("show");
+            ul.removeChild(letters[i]);
         }
 
         const chosenLetters =   document.querySelectorAll('.chosen');
@@ -141,7 +144,6 @@ function restartGame(){
 
         incorrectGuesses = 0;   
 
-        addPhraseToDisplay(null);
         const newPhrasesArray = getRandomPhraseAsArray(phrases);
         addPhraseToDisplay(newPhrasesArray);
           
