@@ -1,13 +1,9 @@
 
 // Variables //
 const keyboardButtons = document.getElementById("qwerty");
-const phrase = document.getElementById("phrase");
-const startGame = document.getElementsByClassName("btn__reset")[0];
 const ul = phrase.querySelector('ul');
-
-
-
-let lives = document.getElementsByClassName("tries");
+const startGame = document.getElementsByClassName("btn__reset")[0];
+const lives = document.getElementsByClassName("tries");
 
 let incorrectGuesses = 0;
 
