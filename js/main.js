@@ -7,7 +7,7 @@ const lives = document.getElementsByClassName("tries");
 
 let incorrectGuesses = 0;
 
-//Start the game
+//Start the game //
 startGame.addEventListener("click", () => {
 
     let screenOverlay = document.getElementById("overlay");
@@ -15,13 +15,25 @@ startGame.addEventListener("click", () => {
    
 });
 
-// An array of cliche phrases
+// An array of cliche phrases //
 const phrases = [
     "Love Is Blind",
-    "What Goes Around Comes Around",
-    "Everything That Glitters Is Not Gold",
+    "Brave As A Lion",
+    "Opposites Attract",
     "Jack Of All Trades",
-    "You Cannot Cry Over Spilt Milk"
+    "Time Flies",
+    "Only Time Will Tell",
+    "Add Insult To Injury",
+    "Against All Odds",
+    "Benefit Of The Doubt",
+    "Beat Around The Bush",
+    "Better Late Than Never",
+    "Bend Over Backwards",
+    "Can Of Worms",
+    "Come Hell Or High Water",
+    "Dog Eat Dog",
+    "Eye For An Eye",
+    "If The Shoe Fits"
 ];
 
 // This function gets a random phrase as an array
