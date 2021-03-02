@@ -99,6 +99,7 @@ function checkWin() {
     if (letters.length == show.length) {
         const overlay = document.getElementById('overlay');
         overlay.classList.remove("start");
+        overlay.classList.remove("lose");
         overlay.classList.add("win");
         overlay.style.display = "flex";
         headLine.innerHTML = "Congratulations, You Won!";
